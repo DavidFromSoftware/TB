@@ -1,1 +1,14 @@
 /ejercicio2/node_modules
+
+# dependencies
+ejercicio3/node_modules
+
+# testing
+ejercicio3/coverage
+
+# production
+ejercicio3/build
+
+ejercicio3/npm-debug.log*
+ejercicio3/yarn-debug.log*
+ejercicio3/yarn-error.log*
