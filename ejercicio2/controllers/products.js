@@ -11,17 +11,29 @@ exports.stock = function(req, res) {
     });
 };
 
-exports.add_stock = function(req, res) {
-	Products.model.findById(req.params.id, function(err, products) {
-        products.quantity   = products.quantity + 1;
+function change_stock(req,res,operation){
+    if(typeof req.query.amount=='undefined'){
+        req.query.amount=1
+    }
+
+    Products.model.findById(req.params.id, function(err, products) {
+        if(operation=="sum"){
+            products.quantity = products.quantity + parseInt(req.query.amount);
+        }else if(operation=="sub"){
+            products.quantity = products.quantity - parseInt(req.query.amount);
+        }
 
         products.save(function(err) {
             if(err) return res.status(500).send(err.message);
-      res.status(200).jsonp(products);
+            res.status(200).jsonp(products);
         });
     });
 }
 
-exports.remove_stock = function(req, res){
+exports.add_stock = function(req, res) {
+    change_stock(req,res,"sum")
+}
 
+exports.remove_stock = function(req, res){
+    change_stock(req,res,"sub")
 }
