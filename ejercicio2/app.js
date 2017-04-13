@@ -5,6 +5,7 @@ var express = require("express"),
     mongoose = require('mongoose');
     Products = require('./models/products');
     ProductCtrl = require('./controllers/products');
+    config = require('./config');
 
 app.use(bodyParser.urlencoded({ extended: false }));  
 app.use(bodyParser.json());  
@@ -29,18 +30,27 @@ products.route('/products/:id/remove')
 	.put(ProductCtrl.remove_stock)
 
 app.use('/api', products);  
-
-mongoose.connect('mongodb://localhost/toolbox', function(err, res) {  
-	if(err) {
-		console.log('Error de conexion de Base de Datos. ' + err);
-	} else {
-		app.listen(3000)
-		Products.model.find(function(err, response) {
-			if(response.length==0){
-				Products.refresh_base()
-			}
-		})
-		console.log("Servidor corriendo en http://localhost:3000");
-	}
+app.use((err, req, res) => {
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
+    res.render('error');
 });
 
+mongoose.connect(config.mongo.uri);
+
+app.listen(config.application.port);
+
+if(process.env.NODE_ENV !== 'test') {
+    mongoose.connection.once('connected', () => {
+        console.log("Mongo connectado:", config.mongo.uri);
+    });
+    Products.model.find(function(err, response) {
+		if(response.length==0){
+			Products.refresh_base()
+		}
+	})
+    console.log("Servidor corriendo:", config.application.port);
+}
+
+
+module.exports = app;

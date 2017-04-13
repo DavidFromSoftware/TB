@@ -52,6 +52,13 @@ Method : PUT
 Url Params: amount=integer
 El parametro amount representa la cantidad que se va a descontar del stock, si no se agrega nada su valor por defecto es 1
 
+### Test
+
+Para correr los test unitarios solo corremos un comando
+
+```sh
+$ npm test
+```
 
 
 ## Ejercicio 3

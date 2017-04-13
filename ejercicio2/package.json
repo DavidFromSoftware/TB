@@ -5,6 +5,16 @@
 		"mongoose": "~3.6.11",
 		"express": "^4.7.1",
 		"method-override": "^2.1.2",
-		"body-parser": "^1.5.1"
- 	}
+		"body-parser": "^1.5.1",
+		"mocha": "^3.2.0",
+		"camo": "*"
+ 	},
+	"devDependencies": {
+	 	"chai": "^3.5.0",
+	 	"chai-http": "^3.0.0",
+	 	"sinon": "^1.17.7"
+	},
+  	"scripts": {
+    	"test": "export NODE_ENV=test && mocha --timeout 10000 --recursive --reporter spec --bail --check-leaks tests"
+  	}
 }

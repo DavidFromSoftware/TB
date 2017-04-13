@@ -11,7 +11,7 @@ var productSchema = new Schema({
 exports.model = mongoose.model('product', productSchema);  
 
 
-exports.refresh_base = function(){
+exports.refresh_base = function(callback){
   var Product = this.model
   var productsByDefault=  [
       {
@@ -40,4 +40,5 @@ exports.refresh_base = function(){
     product.save()
   })
   console.log("Autogenerada data en la base para productos")
+  callback()
 }
