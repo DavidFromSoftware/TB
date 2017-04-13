@@ -9,11 +9,17 @@ var express = require("express"),
 app.use(bodyParser.urlencoded({ extended: false }));  
 app.use(bodyParser.json());  
 app.use(methodOverride());
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 
-// API routes
+// API rutas
 var products = express.Router();
 
-products.route('/products')  
+products.route('/stock')  
 	.get(ProductCtrl.stock)
 
 products.route('/products/:id/add')

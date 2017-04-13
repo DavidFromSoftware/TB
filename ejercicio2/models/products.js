@@ -5,7 +5,7 @@ var mongoose = require('mongoose'),
 var productSchema = new Schema({  
   name:    { type: String },
   price:   { type: Number },
-  quantity: { type: Number }
+  quantity: { type: Number, min: 0 }
 });
 
 exports.model = mongoose.model('product', productSchema);  

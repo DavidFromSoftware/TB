@@ -1,0 +1,36 @@
+- ¿De qué forma guardarías los archivos que un usuario suba por la aplicación al servidor y
+
+porque?
+
+	Los guardaria en una carpeta de contenido como /public o /vendor, quedaria por ejemplo asi:
+
+	/NombreDelProyecto/public/uploads/{nombre_del_modelo}/img_profile/{id_del_usuario}/
+
+	img_profile seria el tipo de imagen, en este caso son todas las imagenes de perfil, y cada carpeta dentro tendria de nombre la id de los usuarios, dentro de cada una estaria las versiones de su imagen de perfil, algo asi:
+	-miImagen.png <--- La original
+	-miImagen300p.png
+	-miImagen720p.png
+	-miImagen1080p.png
+
+	Por darle un nombre a las imagenes de los distintos tamanos que tiene. Puede haber otras carpetas ademas de img_profile y tambien otras carpetas por modelos que necesiten imagenes, como lugares o eventos.
+
+	Finalmente para conectarlas puede haber un registro en la base de datos con la direccion interna en el server de la imagen:
+
+	User, avatar: "/uploads/user/img_profile/1" <---- Para el usuario con el id 1
+
+
+
+- ¿Implementaría un cache del lado del cliente? ¿Porque?
+
+
+	Si, guardar archivos en la cache aceleraria peticiones del usuario los archivos que necesita, ya que de esta manera con informacion cacheada el sistema solo lee que archivo buscar mas ya esta almacenado temporalmente en la cache, la desventaja de esto es que si se sube una nueva version de nuestro sistema y no se ha limpiado la cache, queda la version anterior a los ojos de usuario. 
+
+	Para evitar esto ultimo una solucion practica es utilizar matriz Hash, usando sus algoritmos de criptografia podemos generar una matriz con los archivos guardados en cache y otro con los archivos del servidor al que se le hace la peticion, podemos compararlos y si son iguales no hacemos nada pero si en caso contrario difieren entonces se limpia cache y se guardan los nuevos archivos. 
+
+
+
+- ¿Cuál es la diferencia entre SOAP y REST?
+
+	SOAP y REST son muy diferentes a pesar de que ambos parten del paradigma de arquitecturas SOA (Service Oriented Architecture) que habla de invocar servicios web para el proceso de negocio de una organizacion.
+
+	La principal diferencia es que REST es un patro de arquitecturas desarrollado con verbos simples(GET,POST,PUT,DELETE...) para peticiones faciles con HTTP. SOAP se concentra en el protocolo de mensajeria, esta basado en XML y lo usa para sus mensajes en una variedad de protocolos como HTTP. Una desventaja de esto es que por consecuencia los mensajes con SOAP pueden ser muy largos y mas lentos de transferir. Ya partiendo de este concepto se pueden encontrar otras diferencias, pero su diferencia principal es la mencionada.

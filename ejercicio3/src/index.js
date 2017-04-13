@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import StockTable from './Product'
 
+//Renderizamos en el elemento de id 'stock' toda la tabla del objecto Product
 ReactDOM.render(
-  <App />,
-  document.getElementById('root')
+  <StockTable />,
+  document.getElementById('stock')
 );

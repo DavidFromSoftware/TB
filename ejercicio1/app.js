@@ -5,13 +5,13 @@ var arrayNumeros = []
 var arrayStrings = []
 var stdio = require('stdio');
 
-// Toma cualquier numero como parametro y si es divisible por 3, 5 o ambos devuelve el string correspondiente
+// Toma cualquier numero como parametro y si es divisible por 3 (o si lo incluye), 5 o ambos devuelve el string correspondiente
 function divisible(number){
 	var result = ""
-	if(number % 3 == 0){
+	if( (number % 3 == 0) || ( (''+number).indexOf(3) != -1 ) ){
 		result +="Fizz"
 	}
-	if(number % 5 == 0){
+	if( (number % 5 == 0) || ( (''+number).indexOf(5) != -1 ) ){
 		result += "Buzz"
 	}
 	return result

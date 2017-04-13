@@ -1,7 +1,6 @@
 var mongoose = require('mongoose');  	
     Products = require('../models/products');
 
-//GET - Return all products in the DB
 exports.stock = function(req, res) {  
     Products.model.find(function(err, products) {
     if(err) res.send(500, err.message);

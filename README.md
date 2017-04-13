@@ -16,4 +16,51 @@ Para que asi el archivo app.js tenga permisos de ejercucion por terminal, instal
 
 ## Ejercicio 2
 
+### Comenzar
+
+En la carpeta /ejercicio2/ debemos tener corriendo el servicio de mongodb y despues correr los siguientes comandos en orden: 
+
+```sh
+$ npm install
+$ node app
+```
+
+Si es la primera vez que se corre aparecera el mensaje
+
+```sh
+Autogenerada data en la base para productos
+```
+Se utiliza para tener data por defecto en la tabla que utiliza la api.
+
+### Rutas
+
+#### Obtener Stock
+URL : /api/stock
+Method : GET
+
+
+#### Agregar producto al stock
+URL : /products/:id/add
+Method : PUT
+Url Params: amount=integer
+El parametro amount representa la cantidad que se va a agregar al stock, si no se agrega nada su valor por defecto es 1
+
+
+#### Eliminar producto del Stock
+URL : /products/:id/remove
+Method : PUT
+Url Params: amount=integer
+El parametro amount representa la cantidad que se va a descontar del stock, si no se agrega nada su valor por defecto es 1
+
+
+
 ## Ejercicio 3
+
+### Comenzar
+
+En la carpeta /ejercicio3/ debemos tener corriendo el servicio de mongodb y el ejercicio 2 para los request del este ejercicio, y despues correr los siguientes comandos en orden: 
+
+```sh
+$ npm install
+$ npm start
+```
