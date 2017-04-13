@@ -1,0 +1,9 @@
+{
+  "name": "ejercicio1",
+  "description": "Script encargado de recibir un numero por consola e indicarte si es divisible por 3 o por 5 o ambos",
+  "version": "1.0.0",
+  "main": "app.js",
+  "dependencies": {
+    "stdio": "*"
+  }
+}
