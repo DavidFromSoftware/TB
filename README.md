@@ -35,21 +35,23 @@ Se utiliza para tener data por defecto en la tabla que utiliza la api.
 ### Rutas
 
 #### Obtener Stock
-URL : /api/stock
-Method : GET
+- URL : /api/stock
+- Method : GET
 
 
 #### Agregar producto al stock
-URL : /products/:id/add
-Method : PUT
-Url Params: amount=integer
+- URL : /products/:id/add
+- Method : PUT
+- Url Params: amount=integer
+
 El parametro amount representa la cantidad que se va a agregar al stock, si no se agrega nada su valor por defecto es 1
 
 
 #### Eliminar producto del Stock
-URL : /products/:id/remove
-Method : PUT
-Url Params: amount=integer
+- URL : /products/:id/remove
+- Method : PUT
+- Url Params: amount=integer
+
 El parametro amount representa la cantidad que se va a descontar del stock, si no se agrega nada su valor por defecto es 1
 
 ### Test
