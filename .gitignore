@@ -1,7 +1,9 @@
-/ejercicio2/node_modules
 
 # dependencies
-ejercicio3/node_modules
+/ejercicio1/node_modules
+/ejercicio2/node_modules
+/ejercicio3/node_modules
+
 
 # testing
 ejercicio3/coverage
